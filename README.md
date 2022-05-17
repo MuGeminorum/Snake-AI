@@ -8,13 +8,15 @@ You just need half an hour to train the snake and then it can be as smart as you
 
 ## Requirements
 
+```
 torch
 numpy
 seaborn
 pygame
 matplotlib
 PIL
-   
+```
+
 ## Usage
 
 Run _train.py_ to train, after training, the training curve of current round will autometically show;
