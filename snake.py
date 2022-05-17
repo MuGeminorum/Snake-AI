@@ -236,7 +236,7 @@ class Snake:
 
     # draw grades
     def draw_score(self, screen, score):
-        font = pygame.font.Font(None, 28)
+        font = pygame.font.SysFont('Arial', 28)
         scoreSurf = font.render('Score: %s' % score, True, self.white)
         scoreRect = scoreSurf.get_rect()
         scoreRect.topleft = (self.windows_width - 130, 0)
