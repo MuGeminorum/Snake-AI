@@ -39,13 +39,13 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 
 ## Experiment
 
-| Round        | 1                                  | 2                                  | 3                                  |
-| ------------ | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| Round        |                 1                  |                 2                  |                 3                  |
+| :----------- | :--------------------------------: | :--------------------------------: | :--------------------------------: |
 | Traing curve | <img src="./results/round1.png" /> | <img src="./results/round2.png" /> | <img src="./results/round3.png" /> |
 | Evaluation   | <img src="./results/round1.gif" /> | <img src="./results/round2.gif" /> | <img src="./results/round3.gif" /> |
-| Reward_eat   | +2.0                               | +2.0                               | +2.0                               |
-| Reward_hit   | -0.5                               | -1.0                               | -1.5                               |
-| Reward_bit   | -0.8                               | -1.5                               | -2.0                               |
+| Reward_eat   |                +2.0                |                +2.0                |                +2.0                |
+| Reward_hit   |                -0.5                |                -1.0                |                -1.5                |
+| Reward_bit   |                -0.8                |                -1.5                |                -2.0                |
 
 ## Future work
 
