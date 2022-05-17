@@ -1,6 +1,6 @@
 # PPO-Snake-AI
 
-[![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
+<!-- [![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE) -->
 
 Using deep reinforcement learning to play Snake game.
 
@@ -51,4 +51,4 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 
 ## Future work
 
-The zigzag of snake body looks ugly, try to add punishment into reward for zigzag count.
+The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags.
