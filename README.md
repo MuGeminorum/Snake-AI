@@ -44,3 +44,7 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 | Reward_eat   | +2.0                               | +2.0                               | +2.0                               |
 | Reward_hit   | -0.5                               | -1.0                               | -1.5                               |
 | Reward_bit   | -0.8                               | -1.5                               | -2.0                               |
+
+## Future work
+
+The zigzag of snake body looks ugly, try to add punishment into reward for zigzag count.
