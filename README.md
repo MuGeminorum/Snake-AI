@@ -1,6 +1,8 @@
-# PPO-Snake-AI  
+# PPO-Snake-AI
 
- Using deep reinforcement learning to play Snake game.
+[![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
+
+Using deep reinforcement learning to play Snake game.
 
 The used algorithm is PPO for discrete! It has the brilliant performance in the field of discrete action space just like in continuous action space.
 
