@@ -50,6 +50,12 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 | Reward_bit   |                -0.8                |                -1.5                |                -2.0                |
 | Avg record   |                ≈20                 |                ≈23                 |                ≈28                 |
 
+## Conclusion
+
+1. Increasing the penalty for death leads to higher average records
+2. The training result of the low death penalty strategy has a low reward curve, but it performs well in the demo
+3. A particularly high reward for eating food can lead to quick success regardless of long-term safety
+
 ## Future work
 
 The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags.
