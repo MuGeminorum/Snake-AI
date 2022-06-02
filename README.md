@@ -1,6 +1,6 @@
 # PPO-Snake-AI
 
-<!-- [![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE) -->
+[![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
 
 Using deep reinforcement learning to play Snake game.
 
