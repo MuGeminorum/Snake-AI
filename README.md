@@ -41,14 +41,14 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 
 ## Experiment
 
-| Round        |                 1                  |                 2                  |                 3                  |
-| :----------- | :--------------------------------: | :--------------------------------: | :--------------------------------: |
-| Traing curve | <img src="./results/round1.png" /> | <img src="./results/round2.png" /> | <img src="./results/round3.png" /> |
-| Evaluation   | <img src="./results/round1.gif" /> | <img src="./results/round2.gif" /> | <img src="./results/round3.gif" /> |
-| Reward_eat   |                +2.0                |                +2.0                |                +2.0                |
-| Reward_hit   |                -0.5                |                -1.0                |                -1.5                |
-| Reward_bit   |                -0.8                |                -1.5                |                -2.0                |
-| Avg record   |                ≈19                 |                ≈23                 |                ≈28                 |
+| Round        |                                 1                                 |                                 2                                 |                                 3                                 |
+| :----------- | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+| Traing curve | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round1.png" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round2.png" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round3.png" /> |
+| Evaluation   | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round1.gif" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round2.gif" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round3.gif" /> |
+| Reward_eat   |                               +2.0                                |                               +2.0                                |                               +2.0                                |
+| Reward_hit   |                               -0.5                                |                               -1.0                                |                               -1.5                                |
+| Reward_bit   |                               -0.8                                |                               -1.5                                |                               -2.0                                |
+| Avg record   |                                ≈19                                |                                ≈23                                |                                ≈28                                |
 
 ## Conclusion
 
