@@ -21,9 +21,11 @@ class AgentPPO:
         self.cri = self.cri_optimizer = self.cri_target = None
 
     def init(self, net_dim, state_dim, action_dim, learning_rate=1e-4, if_use_gae=False):
-        self.device = torch.device("cuda")
-        self.get_reward_sum = self.get_reward_sum_gae if if_use_gae else self.get_reward_sum_raw
+        self.device = torch.device("cpu")
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
 
+        self.get_reward_sum = self.get_reward_sum_gae if if_use_gae else self.get_reward_sum_raw
         self.act = ActorPPO(net_dim, state_dim, action_dim).to(self.device)
         self.cri = CriticAdv(net_dim, state_dim).to(self.device)
         self.cri_target = deepcopy(
@@ -160,9 +162,11 @@ class AgentPPO:
 
 class AgentDiscretePPO(AgentPPO):
     def init(self, net_dim, state_dim, action_dim, learning_rate=1e-4, if_use_gae=False):
-        self.device = torch.device("cuda")
-        self.get_reward_sum = self.get_reward_sum_gae if if_use_gae else self.get_reward_sum_raw
+        self.device = torch.device("cpu")
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
 
+        self.get_reward_sum = self.get_reward_sum_gae if if_use_gae else self.get_reward_sum_raw
         self.act = ActorDiscretePPO(
             net_dim, state_dim, action_dim).to(self.device)
         self.cri = CriticAdv(net_dim, state_dim).to(self.device)

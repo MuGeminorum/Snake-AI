@@ -93,8 +93,10 @@ class CriticAdv(nn.Module):
 
 class ReplayBuffer:
     def __init__(self, max_len, state_dim, action_dim, if_discrete):
-        # if torch.cuda.is_available() else "cpu")
-        self.device = torch.device("cuda")
+        self.device = torch.device("cpu")
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+
         self.max_len = max_len
         self.now_len = 0
         self.next_idx = 0
