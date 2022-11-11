@@ -1,12 +1,10 @@
 # PPO-Snake-AI
 
-[![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
 [![Python application](https://github.com/george-chou/PPO-Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/george-chou/PPO-Snake-AI/actions/workflows/python-app.yml)
+[![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
 
-Using deep reinforcement learning to play Snake game.
-
-The used algorithm is PPO for discrete! It has the brilliant performance in the field of discrete action space just like in continuous action space.
-
+Using deep reinforcement learning to play Snake game.\
+The used algorithm is PPO for discrete! It has the brilliant performance in the field of discrete action space just like in continuous action space.\
 You just need half an hour to train the snake and then it can be as smart as you.
 
 ## Requirements
@@ -22,8 +20,7 @@ PIL
 
 ## Usage
 
-Run _train.py_ to train, after training, the training curve of current round will autometically show;
-
+Run _train.py_ to train, after training, the training curve of current round will autometically show;\
 Run _snake.py_ to evaluate latest saved model;
 
 ## Test
