@@ -58,4 +58,5 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 
 ## Future work
 
-The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags.
+1. Training time is too short to reflect the advantages of DRL
+2. The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags
