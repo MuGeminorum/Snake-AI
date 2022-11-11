@@ -115,7 +115,7 @@ class Snake:
         self.screen.fill(self.BG_COLOR)
         self.draw_snake(self.screen, self.snake_coords)
         self.draw_food(self.screen, self.food)
-        self.draw_score(self.screen, len(self.snake_coords)-3)
+        self.draw_score(self.screen, len(self.snake_coords) - 3)
         pygame.display.update()
         self.snake_speed_clock.tick(self.snake_speed)  # control fps
 
@@ -134,8 +134,7 @@ class Snake:
                 index = checkPoint.index([coord['x'], coord['y']])
                 tem[index] = 1
         for i, point in enumerate(checkPoint):
-            if point[0] >= self.map_width or point[0] < 0 or \
-                    point[1] >= self.map_height or point[1] < 0:
+            if point[0] >= self.map_width or point[0] < 0 or point[1] >= self.map_height or point[1] < 0:
                 tem[i] = 1
         state = [deltax, deltay]
         state.extend(tem)
@@ -194,14 +193,10 @@ class Snake:
     # Determine if the snake is dead
     def snake_is_alive(self, snake_coords):
         tag = 0
-        if snake_coords[self.HEAD]['x'] == -1 or \
-            snake_coords[self.HEAD]['x'] == self.map_width or \
-            snake_coords[self.HEAD]['y'] == -1 or \
-                snake_coords[self.HEAD]['y'] == self.map_height:
+        if snake_coords[self.HEAD]['x'] == -1 or snake_coords[self.HEAD]['x'] == self.map_width or snake_coords[self.HEAD]['y'] == -1 or snake_coords[self.HEAD]['y'] == self.map_height:
             tag = 1  # Snake hits the wall
         for snake_body in snake_coords[1:]:
-            if snake_body['x'] == snake_coords[self.HEAD]['x'] and \
-                    snake_body['y'] == snake_coords[self.HEAD]['y']:
+            if snake_body['x'] == snake_coords[self.HEAD]['x'] and snake_body['y'] == snake_coords[self.HEAD]['y']:
                 tag = 2  # Snake touches its body
         return tag
 
@@ -279,7 +274,7 @@ def filter_pkl(lists):
 def get_latest_weight(path):
     lists = os.listdir(path)
     lists = filter_pkl(lists)
-    lists.sort(key=lambda x: os.path.getmtime((path+"\\"+x)))
+    lists.sort(key=lambda x: os.path.getmtime((path + "\\" + x)))
     return path + '/' + lists[-1]
 
 
