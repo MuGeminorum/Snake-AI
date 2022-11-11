@@ -8,7 +8,6 @@ The used algorithm is PPO for discrete! It has the brilliant performance in the 
 You just need half an hour to train the snake and then it can be as smart as you.
 
 ## Requirements
-
 ```
 torch
 numpy
@@ -19,26 +18,23 @@ PIL
 ```
 
 ## Usage
-
-Run _train.py_ to train, after training, the training curve of current round will autometically show;\
-Run _snake.py_ to evaluate latest saved model;
-
-## Test
+### Train
+```
+python train.py # after training, the training curve of current round will autometically show
+python snake.py # evaluate latest saved model
+```
 
 ### Evaluate assigned model
-
 ```
-python evaluate.py --weight ./model/act-weight_round2_614_86.5.pkl
+python evaluate.py --weight ./model/act-weight_round3_472_82.5.pkl
 ```
 
 ### Plot assigned reward log
-
 ```
 python plotter.py --history ./logs/reward_round3_82.5.csv
 ```
 
 ## Experiment
-
 | Round        |                                 1                                 |                                 2                                 |                                 3                                 |
 | :----------- | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
 | Traing curve | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round1.png" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round2.png" /> | <img src="https://picrepo.netlify.app/PPO-Snake-AI/round3.png" /> |
@@ -49,12 +45,10 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 | Avg record   |                                ≈19                                |                                ≈23                                |                                ≈28                                |
 
 ## Conclusion
-
 1. Increasing the penalty for death leads to higher average records
 2. The training result of the low death penalty strategy has a low reward curve, but it performs well in the demo
 3. A particularly high reward for eating food can lead to quick success regardless of long-term safety
 
 ## Future work
-
 1. Training time is too short to reflect the advantages of DRL
 2. The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags

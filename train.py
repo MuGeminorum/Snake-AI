@@ -38,7 +38,7 @@ def time_stamp(episode, rwd):
 def save_model(episode, ep_reward):
     log_path = './history/'
     print('Save model!')
-    if(not os.path.exists(log_path)):
+    if (not os.path.exists(log_path)):
         os.mkdir(log_path)
 
     torch.save(agent.act.state_dict(), log_path + 'act-weight' +
