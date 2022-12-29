@@ -272,10 +272,15 @@ def filter_pkl(lists):
 
 
 def get_latest_weight(path):
-    lists = os.listdir(path)
-    lists = filter_pkl(lists)
-    lists.sort(key=lambda x: os.path.getmtime((path + "\\" + x)))
-    return path + '/' + lists[-1]
+    if os.path.exists(path):
+        lists = os.listdir(path)
+        lists = filter_pkl(lists)
+        lists.sort(key=lambda x: os.path.getmtime((path + "\\" + x)))
+        return path + '/' + lists[-1]
+
+    else:
+        print('Path: ' + path + ' not exist')
+        exit()
 
 
 if __name__ == "__main__":
