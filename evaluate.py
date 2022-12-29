@@ -14,7 +14,12 @@ if __name__ == "__main__":
     env.snake_speed = 20
     agent = AgentDiscretePPO()
     agent.init(512, 6, 4)
-    agent.act.load_state_dict(torch.load(args.weight))
+    device = "cuda"
+    if not torch.cuda.is_available():
+        device = torch.device('cpu')
+        print('cuda not available, switch to cpu')
+    state_dict = torch.load(args.weight, map_location=device)
+    agent.act.load_state_dict(state_dict)
     for _ in range(15):
         o = env.reset()
         while 1:

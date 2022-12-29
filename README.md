@@ -9,12 +9,12 @@ You just need half an hour to train the snake and then it can be as smart as you
 
 ## Requirements
 ```
-torch
-numpy
-seaborn
-pygame
-matplotlib
-PIL
+conda create -n ppo-snake python=3.8
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+pip install pygame==2.1.2
+pip install pandas==1.5.2
+pip install seaborn==0.12.1
+pip install matplotlib==3.6.2
 ```
 
 ## Usage
