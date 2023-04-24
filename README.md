@@ -3,9 +3,7 @@
 [![Python application](https://github.com/george-chou/PPO-Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/george-chou/PPO-Snake-AI/actions/workflows/python-app.yml)
 [![license](https://img.shields.io/github/license/george-chou/PPO-Snake-AI.svg)](https://github.com/george-chou/PPO-Snake-AI/blob/master/LICENSE)
 
-Using deep reinforcement learning to play Snake game.\
-The used algorithm is PPO for discrete! It has the brilliant performance in the field of discrete action space just like in continuous action space.\
-You just need half an hour to train the snake and then it can be as smart as you.
+This project aims to use deep reinforcement learning (DRL) to play Snake game automatically. The core DRL method used here is PPO for discrete, which has brilliant performance in the field of discrete action space like in continuous action space. You just need half an hour to train the snake agent and then it can take effect.
 
 ## Requirements
 ```
@@ -48,5 +46,5 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 3. A particularly high reward for eating food can lead to quick success regardless of long-term safety
 
 ## Future work
-1. Training time is too short to reflect the advantages of DRL
+1. Training time is too short to reflect the advantages of DRL compared to none-DRL method ([Snaqe](https://github.com/george-chou/Snaqe))
 2. The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags
