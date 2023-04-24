@@ -16,19 +16,19 @@ rewards.append({
     'eat': 2.0,
     'hit': -0.5,
     'bit': -0.8
-})
+})  # round 1
 
 rewards.append({
     'eat': 2.0,
     'hit': -1.0,
     'bit': -1.5
-})
+})  # round 2
 
 rewards.append({
     'eat': 2.0,
     'hit': -1.5,
     'bit': -2.0
-})
+})  # round 3
 
 
 class Snake:
