@@ -9,12 +9,10 @@ You just need half an hour to train the snake and then it can be as smart as you
 
 ## Requirements
 ```
-conda create -n ppo-snake python=3.8
-conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
-pip install pygame==2.1.2
-pip install pandas==1.5.2
-pip install seaborn==0.12.1
-pip install matplotlib==3.6.2
+echo y | conda create -n ppo-snake python=3.8
+conda activate ppo-snake
+echo y | conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -35,14 +33,14 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 ```
 
 ## Experiment
-| Round        |                                 1                                 |                                 2                                 |                                 3                                 |
-| :----------- | :---------------------------------------------------------------: | :---------------------------------------------------------------: | :---------------------------------------------------------------: |
+| Round        |                                                        1                                                         |                                                        2                                                         |                                                        3                                                         |
+| :----------- | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
 | Traing curve | ![round1](https://user-images.githubusercontent.com/20459298/233120722-d300c250-a07e-44c1-8986-d1f26d48c0f8.png) | ![round2](https://user-images.githubusercontent.com/20459298/233120780-43c9b35b-def6-4a57-b7b4-6599ad594c5c.png) | ![round3](https://user-images.githubusercontent.com/20459298/233120831-deb18303-25ec-4ff8-bafc-4726d1a81af4.png) |
 | Evaluation   | ![round1](https://user-images.githubusercontent.com/20459298/233120884-b0ea6080-8aa4-4382-9ce5-90c22737cdf3.gif) | ![round2](https://user-images.githubusercontent.com/20459298/233121028-f9431608-3833-49d5-9cde-573fdb82c692.gif) | ![round3](https://user-images.githubusercontent.com/20459298/233121080-9a4f2e95-0f49-40cf-91a4-f7f57d4b861f.gif) |
-| Reward_eat   |                               +2.0                                |                               +2.0                                |                               +2.0                                |
-| Reward_hit   |                               -0.5                                |                               -1.0                                |                               -1.5                                |
-| Reward_bit   |                               -0.8                                |                               -1.5                                |                               -2.0                                |
-| Avg record   |                                ≈19                                |                                ≈23                                |                                ≈28                                |
+| Reward_eat   |                                                       +2.0                                                       |                                                       +2.0                                                       |                                                       +2.0                                                       |
+| Reward_hit   |                                                       -0.5                                                       |                                                       -1.0                                                       |                                                       -1.5                                                       |
+| Reward_bit   |                                                       -0.8                                                       |                                                       -1.5                                                       |                                                       -2.0                                                       |
+| Avg record   |                                                       ≈19                                                        |                                                       ≈23                                                        |                                                       ≈28                                                        |
 
 ## Conclusion
 1. Increasing the penalty for death leads to higher average records
