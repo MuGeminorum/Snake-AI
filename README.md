@@ -7,9 +7,8 @@ This project aims to use deep reinforcement learning (DRL) to play Snake game au
 
 ## Requirements
 ```
-echo y | conda create -n ppo-snake python=3.8
-conda activate ppo-snake
-echo y | conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
+conda create -n ppo --yes --file conda.txt
+conda activate ppo
 pip install -r requirements.txt
 ```
 
