@@ -29,7 +29,7 @@ python evaluate.py --weight ./model/act-weight_round3_472_82.5.pkl
 python plotter.py --history ./logs/reward_round3_82.5.csv
 ```
 
-## Experiment
+## Experiments
 | Round        |                                                        1                                                         |                                                        2                                                         |                                                        3                                                         |
 | :----------- | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
 | Traing curve | ![round1](https://user-images.githubusercontent.com/20459298/233120722-d300c250-a07e-44c1-8986-d1f26d48c0f8.png) | ![round2](https://user-images.githubusercontent.com/20459298/233120780-43c9b35b-def6-4a57-b7b4-6599ad594c5c.png) | ![round3](https://user-images.githubusercontent.com/20459298/233120831-deb18303-25ec-4ff8-bafc-4726d1a81af4.png) |
