@@ -1,6 +1,6 @@
 # Snaqe
 
-[![Python application](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml)
+[![Build status](https://ci.appveyor.com/api/projects/status/y5q3wsmkp48a4yy0/branch/qt?svg=true)](https://ci.appveyor.com/project/MuGeminorum/snake-ai/branch/qt)
 [![license](https://img.shields.io/github/license/MuGeminorum/Snake-AI.svg)](https://github.com/MuGeminorum/Snake-AI/blob/master/LICENSE)
 [![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snake-AI/v2.1/total)](https://github.com/MuGeminorum/Snake-AI/releases)
 
