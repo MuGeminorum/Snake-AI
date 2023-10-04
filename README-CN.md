@@ -1,10 +1,9 @@
 # Snaqe
 
 [![Build status](https://ci.appveyor.com/api/projects/status/y5q3wsmkp48a4yy0/branch/qt?svg=true)](https://ci.appveyor.com/project/MuGeminorum/snake-ai/branch/qt)
-[![license](https://img.shields.io/github/license/MuGeminorum/Snake-AI.svg)](https://github.com/MuGeminorum/Snake-AI/blob/master/LICENSE)
 [![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snake-AI/v2.1/total)](https://github.com/MuGeminorum/Snake-AI/releases)
 
-基于 `A* + Hamilton` 算法、在 Qt(C++) 框架下开发的贪吃蛇AI
+基于 `A* + Hamilton` 算法、在 Qt(C++) 框架下开发的贪吃蛇AI：它使用非机器学习的经典寻路算法A*和Hamilton通路实现贪吃蛇的自动通关。游戏本体由C++版的Qt框架搭建，在游戏本体上进一步添加了AI代码。
 
 |                                                     成功示例                                                      |                                                     问题示例                                                      |
 | :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
