@@ -1,8 +1,8 @@
 # Snaqe
 
-[![license](https://img.shields.io/github/license/MuGeminorum/Snaqe.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![AppVeyor](https://img.shields.io/appveyor/ci/MuGeminorum/Snaqe.svg)](https://ci.appveyor.com/project/MuGeminorum/Snaqe)
-[![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snaqe/v2.1/total)](https://github.com/MuGeminorum/Snaqe/releases)
+[![Python application](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml)
+[![license](https://img.shields.io/github/license/MuGeminorum/Snake-AI.svg)](https://github.com/MuGeminorum/Snake-AI/blob/master/LICENSE)
+[![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snake-AI/v2.1/total)](https://github.com/MuGeminorum/Snake-AI/releases)
 
 基于 `A* + Hamilton` 算法、在 Qt(C++) 框架下开发的贪吃蛇AI
 
