@@ -45,5 +45,5 @@ python plotter.py --history ./logs/reward_round3_82.5.csv
 3. A particularly high reward for eating food can lead to quick success regardless of long-term safety
 
 ## Future work
-1. Training time is too short to reflect the advantages of DRL compared to none-DRL method ([Snaqe](https://github.com/MuGeminorum/Snaqe))
+1. Training time is too short to reflect the advantages of DRL compared to none-DRL method ([Snaqe](https://github.com/MuGeminorum/Snake-AI/tree/qt))
 2. The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags
