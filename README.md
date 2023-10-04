@@ -6,13 +6,13 @@
 
 QSnake AI: the classic snake game with AI based on `A* + Hamilton` algorithm in Qt(C++) version, how about calling it Snaqe?
 
-|                              Demo                               |                             Problem                             |
-| :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+|                                                       Demo                                                        |                                                      Problem                                                      |
+| :---------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------: |
 | ![SnakeAI](https://user-images.githubusercontent.com/20459298/233118020-9604b2ed-c958-44c2-b27a-2c35f37948a2.gif) | ![problem](https://user-images.githubusercontent.com/20459298/233118070-bf508223-c7d3-4336-bff3-d21a3e169480.gif) |
 
 ## Code download
 ```
-git clone https://github.com/MuGeminorum/Snaqe.git
+git clone -b qt https://github.com/MuGeminorum/Snake-AI.git
 ```
 
 ## Environment installation, configuration & code debugging, release
