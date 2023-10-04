@@ -1,49 +1,29 @@
-# PPO-Snake-AI
+# Snaqe
 
-[![Python application](https://github.com/MuGeminorum/PPO-Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/MuGeminorum/PPO-Snake-AI/actions/workflows/python-app.yml)
-[![license](https://img.shields.io/github/license/MuGeminorum/PPO-Snake-AI.svg)](https://github.com/MuGeminorum/PPO-Snake-AI/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/MuGeminorum/Snaqe.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![AppVeyor](https://img.shields.io/appveyor/ci/MuGeminorum/Snaqe.svg)](https://ci.appveyor.com/project/MuGeminorum/Snaqe)
+[![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snaqe/v2.1/total)](https://github.com/MuGeminorum/Snaqe/releases)
 
-This project aims to use deep reinforcement learning (DRL) to play Snake game automatically. The core DRL method used here is PPO for discrete, which has brilliant performance in the field of discrete action space like in continuous action space. You just need half an hour to train the snake agent and then it can take effect.
+QSnake AI: the classic snake game with AI based on `A* + Hamilton` algorithm in Qt(C++) version, how about calling it Snaqe?
 
-## Requirements
+|                              Demo                               |                             Problem                             |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![SnakeAI](https://user-images.githubusercontent.com/20459298/233118020-9604b2ed-c958-44c2-b27a-2c35f37948a2.gif) | ![problem](https://user-images.githubusercontent.com/20459298/233118070-bf508223-c7d3-4336-bff3-d21a3e169480.gif) |
+
+## Code download
 ```
-conda create -n ppo --yes --file conda.txt
-conda activate ppo
-pip install -r requirements.txt
-```
-
-## Usage
-### Train
-```
-python train.py # after training, the training curve of current round will autometically show
-python snake.py # evaluate latest saved model
+git clone https://github.com/MuGeminorum/Snaqe.git
 ```
 
-### Evaluate assigned model
-```
-python evaluate.py --weight ./model/act-weight_round3_472_82.5.pkl
-```
+## Environment installation, configuration & code debugging, release
+Please refer to this [blog post](https://www.cnblogs.com/MuGeminorum/p/17017063.html) for this section.
 
-### Plot assigned reward log
-```
-python plotter.py --history ./logs/reward_round3_82.5.csv
-```
+## License
 
-## Experiments
-| Round        |                                                        1                                                         |                                                        2                                                         |                                                        3                                                         |
-| :----------- | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------: |
-| Traing curve | ![round1](https://user-images.githubusercontent.com/20459298/233120722-d300c250-a07e-44c1-8986-d1f26d48c0f8.png) | ![round2](https://user-images.githubusercontent.com/20459298/233120780-43c9b35b-def6-4a57-b7b4-6599ad594c5c.png) | ![round3](https://user-images.githubusercontent.com/20459298/233120831-deb18303-25ec-4ff8-bafc-4726d1a81af4.png) |
-| Evaluation   | ![round1](https://user-images.githubusercontent.com/20459298/233120884-b0ea6080-8aa4-4382-9ce5-90c22737cdf3.gif) | ![round2](https://user-images.githubusercontent.com/20459298/233121028-f9431608-3833-49d5-9cde-573fdb82c692.gif) | ![round3](https://user-images.githubusercontent.com/20459298/233121080-9a4f2e95-0f49-40cf-91a4-f7f57d4b861f.gif) |
-| Reward_eat   |                                                       +2.0                                                       |                                                       +2.0                                                       |                                                       +2.0                                                       |
-| Reward_hit   |                                                       -0.5                                                       |                                                       -1.0                                                       |                                                       -1.5                                                       |
-| Reward_bit   |                                                       -0.8                                                       |                                                       -1.5                                                       |                                                       -2.0                                                       |
-| Avg record   |                                                       ≈19                                                        |                                                       ≈23                                                        |                                                       ≈28                                                        |
+![GPL-v3](https://www.gnu.org/graphics/gplv3-127x51.png)
 
-## Conclusions
-1. Increasing the penalty for death leads to higher average records
-2. The training result of the low death penalty strategy has a low reward curve, but it performs well in the demo
-3. A particularly high reward for eating food can lead to quick success regardless of long-term safety
+[Flat icon set](./Snaqe/Resources/Snake_48px_1186148_easyicon.net.ico) from [easyicon](https://www.easyicon.cc/);
 
-## Future work
-1. Training time is too short to reflect the advantages of DRL compared to none-DRL method ([Snaqe](https://github.com/MuGeminorum/Snaqe))
-2. The zigzag of snake body looks ugly, try to add punishment into reward for too many zigzags
+All source codes are licensed under [GPL-3.0](https://opensource.org/licenses/GPL-3.0).
+
+If you want to make any modification on these source codes while keeping new codes unprotected by GPL-3.0, please contact me for a sublicense instead.
