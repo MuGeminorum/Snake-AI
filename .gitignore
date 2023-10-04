@@ -204,3 +204,4 @@ Snaqe/Release/*
 Debug/*
 Release/*
 .vs/*
+__pycache__/*
