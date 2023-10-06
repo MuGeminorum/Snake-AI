@@ -1,6 +1,6 @@
 # Snake-AI
 
-[![Python application](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml)
+[![Python application](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml/badge.svg?branch=ppo)](https://github.com/MuGeminorum/Snake-AI/actions/workflows/python-app.yml)
 [![license](https://img.shields.io/github/license/MuGeminorum/Snake-AI.svg)](https://github.com/MuGeminorum/Snake-AI/blob/master/LICENSE)
 
 This project aims to use deep reinforcement learning (DRL) to play Snake game automatically. The core DRL method used here is PPO for discrete, which has brilliant performance in the field of discrete action space like in continuous action space. You just need half an hour to train the snake agent and then it can take effect.
