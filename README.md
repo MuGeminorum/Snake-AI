@@ -1,7 +1,7 @@
 # Snaqe
-
 [![Build status](https://ci.appveyor.com/api/projects/status/y5q3wsmkp48a4yy0/branch/qt?svg=true)](https://ci.appveyor.com/project/MuGeminorum/snake-ai/branch/qt)
 [![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snake-AI/v2.1/total)](https://github.com/MuGeminorum/Snake-AI/releases/tag/v2.1)
+[![](https://img.shields.io/badge/bilibili-BV1qH4y127eL-fc8bab.svg)](https://www.bilibili.com/video/BV1qH4y127eL)
 
 QSnake AI: the classic snake game with AI based on `A* + Hamilton` algorithm in Qt(C++) version, how about calling it Snaqe? We use non-machine learning classical pathfinding algorithm A* and Hamilton pathway to achieve the auto-pass of Gluttony. The game body is built from a C++ version of the Qt framework, with further AI code added to the game body.
 
