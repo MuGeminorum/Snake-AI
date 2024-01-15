@@ -6,7 +6,7 @@
 This project aims to use deep reinforcement learning (DRL) to play Snake game automatically. The core DRL method used here is PPO for discrete, which has brilliant performance in the field of discrete action space like in continuous action space. You just need half an hour to train the snake agent and then it can take effect.
 
 ## Requirements
-```
+```bash
 conda create -n ppo --yes --file conda.txt
 conda activate ppo
 pip install -r requirements.txt
@@ -14,18 +14,18 @@ pip install -r requirements.txt
 
 ## Usage
 ### Train
-```
+```bash
 python train.py # after training, the training curve of current round will autometically show
 python snake.py # evaluate latest saved model
 ```
 
 ### Evaluate assigned model
-```
+```bash
 python evaluate.py --weight ./model/act-weight_round3_472_82.5.pkl
 ```
 
 ### Plot assigned reward log
-```
+```bash
 python plotter.py --history ./logs/reward_round3_82.5.csv
 ```
 
