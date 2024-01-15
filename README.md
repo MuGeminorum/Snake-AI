@@ -10,7 +10,7 @@ QSnake AI: the classic snake game with AI based on `A* + Hamilton` algorithm in 
 | ![SnakeAI](https://user-images.githubusercontent.com/20459298/233118020-9604b2ed-c958-44c2-b27a-2c35f37948a2.gif) | ![problem](https://user-images.githubusercontent.com/20459298/233118070-bf508223-c7d3-4336-bff3-d21a3e169480.gif) |
 
 ## Code download
-```
+```bash
 git clone -b qt https://github.com/MuGeminorum/Snake-AI.git
 ```
 
@@ -18,7 +18,6 @@ git clone -b qt https://github.com/MuGeminorum/Snake-AI.git
 Please refer to this [blog post](https://www.cnblogs.com/MuGeminorum/p/17017063.html) for this section.
 
 ## License
-
 ![GPL-v3](https://www.gnu.org/graphics/gplv3-127x51.png)
 
 [Flat icon set](./Snaqe/Resources/Snake_48px_1186148_easyicon.net.ico) from [easyicon](https://www.easyicon.cc/);
