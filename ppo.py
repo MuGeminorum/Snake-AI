@@ -1,21 +1,26 @@
-import torch.nn as nn
 import torch
-import numpy as np
+import torch.nn as nn
 import random as rd
+import numpy as np
 
 
 class ActorPPO(nn.Module):
     def __init__(self, mid_dim, state_dim, action_dim):
         super().__init__()
-        self.net = nn.Sequential(nn.Linear(state_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
-                                 nn.Linear(mid_dim, action_dim), )
-        layer_norm(self.net[-1], std=0.1)  # output layer for action
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
+            nn.Linear(mid_dim, action_dim)
+        )
+        # output layer for action
+        layer_norm(self.net[-1], std=0.1)
 
         # the logarithm (log) of standard deviation (std) of action, it is a trainable parameter
-        self.a_logstd = nn.Parameter(torch.zeros(
-            (1, action_dim)) - 0.5, requires_grad=True)
+        self.a_logstd = nn.Parameter(
+            torch.zeros((1, action_dim)) - 0.5,
+            requires_grad=True
+        )
         self.sqrt_2pi_log = np.log(np.sqrt(2 * np.pi))
 
     def forward(self, state):
@@ -40,7 +45,7 @@ class ActorPPO(nn.Module):
         dist_entropy = (logprob.exp() * logprob).mean()  # policy entropy
         return logprob, dist_entropy
 
-    def get_old_logprob(self, _action, noise):  # noise = action - a_noise
+    def get_old_logprob(self, _, noise):  # noise = action - a_noise
         delta = noise.pow(2) * 0.5
         return -(self.a_logstd + self.sqrt_2pi_log + delta).sum(1)  # old_logprob
 
@@ -48,10 +53,12 @@ class ActorPPO(nn.Module):
 class ActorDiscretePPO(nn.Module):
     def __init__(self, mid_dim, state_dim, action_dim):
         super().__init__()
-        self.net = nn.Sequential(nn.Linear(state_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
-                                 nn.Linear(mid_dim, action_dim))
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
+            nn.Linear(mid_dim, action_dim)
+        )
         self.action_dim = action_dim
         self.soft_max = nn.Softmax(dim=-1)
         self.Categorical = torch.distributions.Categorical
@@ -81,10 +88,12 @@ class ActorDiscretePPO(nn.Module):
 class CriticAdv(nn.Module):
     def __init__(self, mid_dim, state_dim):
         super().__init__()
-        self.net = nn.Sequential(nn.Linear(state_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.ReLU(),
-                                 nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
-                                 nn.Linear(mid_dim, 1))
+        self.net = nn.Sequential(
+            nn.Linear(state_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.ReLU(),
+            nn.Linear(mid_dim, mid_dim), nn.Hardswish(),
+            nn.Linear(mid_dim, 1)
+        )
         layer_norm(self.net[-1], std=0.5)  # output layer for Q value
 
     def forward(self, state):
@@ -137,30 +146,44 @@ class ReplayBuffer:
         self.next_idx = next_idx
 
     def extend_buffer_from_list(self, trajectory_list):
-        state_ary = np.array([item[0]
-                             for item in trajectory_list], dtype=np.float32)
-        other_ary = np.array([item[1]
-                             for item in trajectory_list], dtype=np.float32)
+        state_ary = np.array(
+            [item[0] for item in trajectory_list],
+            dtype=np.float32
+        )
+        other_ary = np.array(
+            [item[1] for item in trajectory_list],
+            dtype=np.float32
+        )
         self.extend_buffer(state_ary, other_ary)
 
     def sample_batch(self, batch_size):
         indices = rd.randint(self.now_len - 1, size=batch_size)
         r_m_a = self.buf_other[indices]
-        return (r_m_a[:, 0:1],  # reward
-                r_m_a[:, 1:2],  # mask = 0.0 if done else gamma
-                r_m_a[:, 2:],  # action
-                self.buf_state[indices],  # state
-                self.buf_state[indices + 1])  # next_state
+        return (
+            r_m_a[:, 0:1],  # reward
+            r_m_a[:, 1:2],  # mask = 0.0 if done else gamma
+            r_m_a[:, 2:],  # action
+            self.buf_state[indices],  # state
+            self.buf_state[indices + 1]
+        )  # next_state
 
     def sample_all(self):
         all_other = torch.as_tensor(
-            self.buf_other[:self.now_len], device=self.device)
-        return (all_other[:, 0],  # reward
-                all_other[:, 1],  # mask = 0.0 if done else gamma
-                all_other[:, 2:2 + self.action_dim],  # action
-                # action_noise or action_prob
-                all_other[:, 2 + self.action_dim:],
-                torch.as_tensor(self.buf_state[:self.now_len], device=self.device))  # state
+            self.buf_other[:self.now_len],
+            device=self.device
+        )
+
+        return (
+            all_other[:, 0],  # reward
+            all_other[:, 1],  # mask = 0.0 if done else gamma
+            all_other[:, 2:2 + self.action_dim],  # action
+            # action_noise or action_prob
+            all_other[:, 2 + self.action_dim:],
+            torch.as_tensor(
+                self.buf_state[:self.now_len],
+                device=self.device
+            )
+        )  # state
 
     def update_now_len(self):
         self.now_len = self.max_len if self.if_full else self.next_idx

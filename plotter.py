@@ -2,8 +2,12 @@ import argparse
 from painter import Painter
 
 parser = argparse.ArgumentParser(description='plot')
-parser.add_argument('--history', type=str,
-                    default='./logs/reward_round3_82.5.csv', help='Select training log.')
+parser.add_argument(
+    '--history',
+    type=str,
+    default='./logs/reward_round3_82.5.csv',
+    help='Select training log.'
+)
 args = parser.parse_args()
 
 if __name__ == "__main__":
