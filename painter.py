@@ -1,8 +1,8 @@
+import os
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import numpy as np
-import os
 
 
 class Painter:
@@ -21,7 +21,9 @@ class Painter:
                 print("==There is no file in {}, Painter has automatically created the csv.".format(
                     self.load_dir))
                 self.data = pd.DataFrame(
-                    columns=['episode reward', 'episode', 'Method'])
+                    columns=['episode reward', 'episode', 'Method']
+                )
+
         self.xlabel = None
         self.ylabel = None
         self.title = None
@@ -40,18 +42,27 @@ class Painter:
     def addData(self, dataSeries, method, x=None, smooth=True):
         if smooth:
             dataSeries = self.smooth(dataSeries)
+
         size = len(dataSeries)
         if x is not None:
             if len(x) != size:
                 print("Please enter x of the same dimension!")
                 return
+
         for i in range(size):
             if x is not None:
                 dataToAppend = {
-                    'episode reward': dataSeries[i], 'episode': x[i], 'Method': method}
+                    'episode reward': dataSeries[i],
+                    'episode': x[i],
+                    'Method': method
+                }
             else:
                 dataToAppend = {
-                    'episode reward': dataSeries[i], 'episode': i+1, 'Method': method}
+                    'episode reward': dataSeries[i],
+                    'episode': i+1,
+                    'Method': method
+                }
+
             self.data = self.data.append(dataToAppend, ignore_index=True)
 
     def drawFigure(self, style="darkgrid"):
@@ -61,8 +72,14 @@ class Painter:
         sns.set_theme(style=style)
         sns.set_style(rc={"linewidth": 1})
         print("==Drawing...")
-        sns.relplot(data=self.data, kind="line", x="episode", y="episode reward",
-                    hue="Method", hue_order=None)
+        sns.relplot(
+            data=self.data,
+            kind="line",
+            x="episode",
+            y="episode reward",
+            hue="Method",
+            hue_order=None
+        )
         plt.title(self.title, fontsize=12)
         plt.xlabel(self.xlabel)
         plt.ylabel(self.ylabel)
@@ -94,6 +111,7 @@ class Painter:
                 begin_index = i
                 mode = 1
                 continue
+
             if mode == 1 and self.data.iloc[i]['episode'] == 1:
                 self.data.iloc[begin_index:i, 0] = self.smooth(
                     self.data.iloc[begin_index:i, 0], N=N
@@ -103,10 +121,13 @@ class Painter:
                 if self.data.iloc[i]['Method'] == smooth_method_name:
                     begin_index = i
                     mode = 1
+
             if mode == 1 and i == len(self.data) - 1:
                 self.data.iloc[begin_index:, 0] = self.smooth(
-                    self.data.iloc[begin_index:, 0], N=N
+                    self.data.iloc[begin_index:, 0],
+                    N=N
                 )
+
         print("==Finished smoothing {} data {} times!".format(
             smooth_method_name, N))
 
@@ -122,4 +143,5 @@ class Painter:
             else:
                 temp = len(data) - i
                 res[i] = sum(data[-temp * 2 + 1:]) / (2 * temp - 1)
+
         return res

@@ -4,8 +4,12 @@ from snake import *
 
 
 parser = argparse.ArgumentParser(description='test')
-parser.add_argument('--weight', type=str,
-                    default='./model/act-weight_round3_472_82.5.pkl', help='Select saved model.')
+parser.add_argument(
+    '--weight',
+    type=str,
+    default='./model/act-weight_round3_472_82.5.pkl',
+    help='Select saved model.'
+)
 args = parser.parse_args()
 
 if __name__ == "__main__":
@@ -18,6 +22,7 @@ if __name__ == "__main__":
     if not torch.cuda.is_available():
         device = torch.device('cpu')
         print('cuda not available, switch to cpu')
+
     state_dict = torch.load(args.weight, map_location=device)
     agent.act.load_state_dict(state_dict)
     for _ in range(15):
@@ -26,6 +31,7 @@ if __name__ == "__main__":
             env.render()
             for event in pygame.event.get():  # If you don't add this render, it will freeze
                 pass
+
             a, _ = agent.select_action(o)
             o2, r, d, _ = env.step(a)
             o = o2
