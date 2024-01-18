@@ -27,8 +27,7 @@ class AgentPPO:
         self.get_reward_sum = self.get_reward_sum_gae if if_use_gae else self.get_reward_sum_raw
         self.act = ActorPPO(net_dim, state_dim, action_dim).to(self.device)
         self.cri = CriticAdv(net_dim, state_dim).to(self.device)
-        self.cri_target = deepcopy(
-            self.cri) if self.cri_target is True else self.cri
+        self.cri_target = deepcopy(self.cri) if self.cri_target else self.cri
         self.criterion = torch.nn.SmoothL1Loss()
         self.act_optimizer = torch.optim.Adam(
             self.act.parameters(),
@@ -73,7 +72,8 @@ class AgentPPO:
         buffer.update_now_len()
         buf_len = buffer.now_len
         buf_state, buf_action, buf_r_sum, buf_logprob, buf_advantage = self.prepare_buffer(
-            buffer)
+            buffer
+        )
         buffer.empty_buffer()
         '''PPO: Surrogate objective of Trust Region'''
         obj_critic = obj_actor = logprob = None
@@ -109,8 +109,8 @@ class AgentPPO:
                 self.cri,
                 soft_update_tau
             ) if self.cri_target is not self.cri else None
-
-        return obj_critic.item(), obj_actor.item(), logprob.mean().item()  # logging_tuple
+        # logging_tuple
+        return obj_critic.item(), obj_actor.item(), logprob.mean().item()
 
     def prepare_buffer(self, buffer):
         buf_len = buffer.now_len
@@ -173,7 +173,6 @@ class AgentPPO:
         for i in range(buf_len - 1, -1, -1):
             buf_r_sum[i] = buf_reward[i] + buf_mask[i] * pre_r_sum
             pre_r_sum = buf_r_sum[i]
-
             buf_advantage[i] = buf_reward[i] + buf_mask[i] * \
                 (pre_advantage - buf_value[i])  # fix a bug here
             pre_advantage = buf_value[i] + \
@@ -209,8 +208,7 @@ class AgentDiscretePPO(AgentPPO):
             action_dim
         ).to(self.device)
         self.cri = CriticAdv(net_dim, state_dim).to(self.device)
-        self.cri_target = deepcopy(
-            self.cri) if self.cri_target is True else self.cri
+        self.cri_target = deepcopy(self.cri) if self.cri_target else self.cri
         self.criterion = torch.nn.SmoothL1Loss()
         self.act_optimizer = torch.optim.Adam(
             self.act.parameters(),

@@ -13,13 +13,10 @@ from Agent import AgentDiscretePPO
 MAX_EPISODE = 800
 
 
-def testAgent(test_env, agent, episode):
+def testAgent(test_env, agent):
     ep_reward = 0
     o = test_env.reset()
     for _ in range(650):
-        # if episode % 100 == 0:
-        #     test_env.render()
-
         for _ in pygame.event.get():
             pass  # If you don't add this render, it will freeze
 
@@ -72,15 +69,13 @@ if __name__ == "__main__":
 
         buffer.extend_buffer_from_list(trajectory_list)
         agent.update_net(buffer, batch_size, 1, 2**-8)
-        ep_reward = testAgent(test_env, agent, episode)
-        # print('Episode:', episode, 'Reward:%f' % ep_reward)
+        ep_reward = testAgent(test_env, agent)
         rewardList.append(ep_reward)
         if episode > MAX_EPISODE / 3 and ep_reward > maxReward:
             maxReward = ep_reward
             save_model(episode, ep_reward)
 
     pygame.quit()
-
     rwd_path = f'./history/reward{time_stamp(MAX_EPISODE, maxReward)}.csv'
     painter = Painter(load_csv=True, load_dir=rwd_path)
     painter.addData(rewardList, 'PPO')
