@@ -9,17 +9,19 @@ class Painter:
     def __init__(self, load_csv, load_dir=None):
         if not load_csv:
             self.data = pd.DataFrame(
-                columns=['episode reward', 'episode', 'Method'])
+                columns=['episode reward', 'episode', 'Method']
+            )
         else:
             self.load_dir = load_dir
             if os.path.exists(self.load_dir):
-                print("==Reading {}.".format(self.load_dir))
+                print(f"==Reading {self.load_dir}.")
                 # The first column of the csv file is index, so you don't need to take it.
                 self.data = pd.read_csv(self.load_dir).iloc[:, 1:]
                 print("==Reading complete")
             else:
-                print("==There is no file in {}, Painter has automatically created the csv.".format(
-                    self.load_dir))
+                print(
+                    f"==There is no file in {self.load_dir}, Painter has automatically created the csv."
+                )
                 self.data = pd.DataFrame(
                     columns=['episode reward', 'episode', 'Method']
                 )
@@ -59,7 +61,7 @@ class Painter:
             else:
                 dataToAppend = {
                     'episode reward': dataSeries[i],
-                    'episode': i+1,
+                    'episode': i + 1,
                     'Method': method
                 }
 
@@ -88,7 +90,7 @@ class Painter:
 
     def saveData(self, save_dir):
         self.data.to_csv(save_dir)
-        print("==Data has been saved to path {}!".format(save_dir))
+        print(f"==Data has been saved to path {save_dir}!")
 
     def addCsv(self, add_load_dir):
         """Merge another csv file into load_dir's csv file."""
@@ -98,8 +100,9 @@ class Painter:
     def deleteData(self, delete_data_name):
         """To delete the data of a method, it needs to be saved manually after deletion, it will not be saved automatically."""
         self.data = self.data[~self.data['Method'].isin([delete_data_name])]
-        print("==The corresponding data under {} has been deleted!".format(
-            delete_data_name))
+        print(
+            f"==The corresponding data under {delete_data_name} has been deleted!"
+        )
 
     def smoothData(self, smooth_method_name, N):
         """Perform MA filtering on the reward under a certain method, where N is the MA filtering order."""
@@ -128,8 +131,7 @@ class Painter:
                     N=N
                 )
 
-        print("==Finished smoothing {} data {} times!".format(
-            smooth_method_name, N))
+        print(f"==Finished smoothing {smooth_method_name} data {N} times!")
 
     @staticmethod
     def smooth(data, N=11):

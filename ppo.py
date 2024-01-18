@@ -15,7 +15,6 @@ class ActorPPO(nn.Module):
         )
         # output layer for action
         layer_norm(self.net[-1], std=0.1)
-
         # the logarithm (log) of standard deviation (std) of action, it is a trainable parameter
         self.a_logstd = nn.Parameter(
             torch.zeros((1, action_dim)) - 0.5,
@@ -24,30 +23,31 @@ class ActorPPO(nn.Module):
         self.sqrt_2pi_log = np.log(np.sqrt(2 * np.pi))
 
     def forward(self, state):
-        return self.net(state).tanh()  # action.tanh()
+        # action.tanh()
+        return self.net(state).tanh()
 
     def get_action(self, state):
         a_avg = self.net(state)
         a_std = self.a_logstd.exp()
-
         noise = torch.randn_like(a_avg)
         action = a_avg + noise * a_std
+
         return action, noise
 
     def get_logprob_entropy(self, state, action):
         a_avg = self.net(state)
         a_std = self.a_logstd.exp()
-
         delta = ((a_avg - action) / a_std).pow(2) * 0.5
-        logprob = -(self.a_logstd + self.sqrt_2pi_log +
-                    delta).sum(1)  # new_logprob
-
-        dist_entropy = (logprob.exp() * logprob).mean()  # policy entropy
+        logprob = -(self.a_logstd + self.sqrt_2pi_log + delta).sum(1)
+        # new_logprob
+        dist_entropy = (logprob.exp() * logprob).mean()
+        # policy entropy
         return logprob, dist_entropy
 
     def get_old_logprob(self, _, noise):  # noise = action - a_noise
         delta = noise.pow(2) * 0.5
-        return -(self.a_logstd + self.sqrt_2pi_log + delta).sum(1)  # old_logprob
+        # old_logprob
+        return -(self.a_logstd + self.sqrt_2pi_log + delta).sum(1)
 
 
 class ActorDiscretePPO(nn.Module):
@@ -64,14 +64,14 @@ class ActorDiscretePPO(nn.Module):
         self.Categorical = torch.distributions.Categorical
 
     def forward(self, state):
-        return self.net(state)  # action_prob without softmax
+        # action_prob without softmax
+        return self.net(state)
 
     def get_action(self, state):
         a_prob = self.soft_max(self.net(state))
-        # dist = Categorical(a_prob)
-        # action = dist.sample()
         samples_2d = torch.multinomial(a_prob, num_samples=1, replacement=True)
         action = samples_2d.reshape(state.size(0))
+        # dist = Categorical(a_prob) action = dist.sample()
         return action, a_prob
 
     def get_logprob_entropy(self, state, action):
@@ -97,7 +97,8 @@ class CriticAdv(nn.Module):
         layer_norm(self.net[-1], std=0.5)  # output layer for Q value
 
     def forward(self, state):
-        return self.net(state)  # Q value
+        # Q value
+        return self.net(state)
 
 
 class ReplayBuffer:
@@ -113,17 +114,13 @@ class ReplayBuffer:
         self.action_dim = 1 if if_discrete else action_dim  # for self.sample_all(
         self.tuple = None
         self.np_torch = torch
-
         other_dim = 1 + 1 + self.action_dim + action_dim
-        # other = (reward, mask, action, a_noise) for continuous action
-        # other = (reward, mask, a_int, a_prob) for discrete action
         self.buf_other = np.empty((max_len, other_dim), dtype=np.float32)
         self.buf_state = np.empty((max_len, state_dim), dtype=np.float32)
 
     def append_buffer(self, state, other):  # CPU array to CPU array
         self.buf_state[self.next_idx] = state
         self.buf_other[self.next_idx] = other
-
         self.next_idx += 1
         if self.next_idx >= self.max_len:
             self.if_full = True
@@ -136,13 +133,14 @@ class ReplayBuffer:
             self.buf_state[self.next_idx:self.max_len] = state[:self.max_len - self.next_idx]
             self.buf_other[self.next_idx:self.max_len] = other[:self.max_len - self.next_idx]
             self.if_full = True
-
             next_idx = next_idx - self.max_len
             self.buf_state[0:next_idx] = state[-next_idx:]
             self.buf_other[0:next_idx] = other[-next_idx:]
+
         else:
             self.buf_state[self.next_idx:next_idx] = state
             self.buf_other[self.next_idx:next_idx] = other
+
         self.next_idx = next_idx
 
     def extend_buffer_from_list(self, trajectory_list):
