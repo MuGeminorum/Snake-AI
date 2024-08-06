@@ -4,12 +4,12 @@
 [![Github All Releases](https://img.shields.io/github/downloads-pre/MuGeminorum/Snake-AI/v2.1/total)](https://github.com/MuGeminorum/Snake-AI/releases/tag/v2.1)
 [![](https://img.shields.io/badge/bilibili-BV1qH4y127eL-fc8bab.svg)](https://www.bilibili.com/video/BV1qH4y127eL)
 
-基于 `A* + Hamilton` 算法、在 Qt(C++) 框架下开发的贪吃蛇AI：它使用非机器学习的经典寻路算法A*和Hamilton通路实现贪吃蛇的自动通关。游戏本体由C++版的Qt框架搭建，在游戏本体上进一步添加了AI代码。
+基于 `A* + Hamilton` 算法、在 Qt(C++) 框架下开发的贪吃蛇 AI：它使用非机器学习的经典寻路算法 A* 和 Hamilton 通路实现贪吃蛇的自动通关。游戏本体由 C++ 版的 Qt 框架搭建，在游戏本体上进一步添加了 AI 代码。
 
 QSnake AI: the classic snake game with AI based on `A* + Hamilton` algorithm in Qt(C++) version, how about calling it Snaqe? We use non-machine learning classical pathfinding algorithm A* and Hamilton pathway to achieve the auto-pass of Gluttony. The game body is built from a C++ version of the Qt framework, with further AI code added to the game body.
 
 ## 示例 Demo
-当前算法仍然存在蛇无法吃满全屏的缺陷，还在优化避免问题示例中出现的问题：
+当前算法仍然存在蛇无法吃满全屏的缺陷，还在优化避免问题示例中出现的情况：
 
 The current algorithm still suffers from the flaw of the snake not being able to eat its way across the full screen, and is still being optimized to avoid the problems seen in the problem example:
 |                                              成功示例 Success                                              |                                              问题示例 Problem                                              |
